@@ -6,11 +6,11 @@ The HTML document type declaration is the first line of code in html document. I
 
 ## New features in HTML5
 
-..* New Sementic Elements:- like <headers> <footers> <sections> etc. This give more information about the items in DOM. Headers will be displayed on the top and footer will be in the bottom.
-..*New form fields:- New addition to Input types like email, tel, etc. Which helps us for valdiation.
-Support for Video & Audio:-** it allow user to easily stream from web page
-**Figures**:- Figures elements can be used to display visual content like photos, illustrations, diagrams and code
-**Persistance local storage:-** To acheive without restoring to third party plugins
-[WebSockets](https://dzone.com/refcardz/html5-websocket)
-**Geolocation:-** Now visitor can choose to share their physical location on web
-**Drag & Drop**
+1 ** New Sementic Elements**:- like <headers> <footers> <sections> etc. This give more information about the items in DOM. Headers will be displayed on the top and footer will be in the bottom.
+2 **New form fields**:- New addition to Input types like email, tel, etc. Which helps us for valdiation.
+3 **Support for Video & Audio:-** it allow user to easily stream from web page
+4 **Figures**:- Figures elements can be used to display visual content like photos, illustrations, diagrams and code
+5 **Persistance local storage:-** To acheive without restoring to third party plugins
+6 [WebSockets](https://dzone.com/refcardz/html5-websocket)
+7 **Geolocation:-** Now visitor can choose to share their physical location on web
+8 **Drag & Drop**
