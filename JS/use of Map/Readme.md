@@ -1,5 +1,5 @@
-![img](temp)
-![img](temp)
+![img](https://github.com/RahulTinku/Interview-questions/blob/main/JS/use%20of%20Map/img/temp4.PNG)
+![img](https://github.com/RahulTinku/Interview-questions/blob/main/JS/use%20of%20Map/img/temp5.PNG)
 
 ### answer
 
