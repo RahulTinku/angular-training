@@ -3,7 +3,7 @@
 
 ### answer
 
-````
+```
  let myMap = new Map();
     let count = 0;
     for(let a of ar){
@@ -28,7 +28,7 @@ Map is a collection of key-value dataset just like Object, but the main differen
 
 ### Methods and propeties are
 
-````
+```
 
 new Map() :- create new Map
 map.set(key, value) :- stores the value by key
@@ -115,8 +115,6 @@ Object.entries is the new Object static method aviable in ES2017
 
 const map = new Map(Object.entries({foo:'bar'}))
 map.get('foo'); // bar
-
 ```
 
 [Read full document](https://javascript.info/map-set)
-```
