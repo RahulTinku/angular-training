@@ -1,5 +1,5 @@
-![img](temp)
-![img](temp)
+![img](https://github.com/RahulTinku/Interview-questions/blob/main/JS/algo-sales-by-match/img/temp4.PNG)
+![img](https://github.com/RahulTinku/Interview-questions/blob/main/JS/algo-sales-by-match/img/temp5.PNG)
 
 ### answer
 
