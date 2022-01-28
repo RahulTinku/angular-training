@@ -13,8 +13,8 @@ delete car.brand
 console.log(car.brand) // O/P maruti
 ```
 
-![car](temp)
-![car1](temp3)
+![car](https://github.com/RahulTinku/Interview-questions/blob/main/JS/Object%20create/img/temp.PNG)
+![car1](https://github.com/RahulTinku/Interview-questions/blob/main/JS/Object%20create/img/temp3.PNG)
 
 But if you create an object with {}, it doesnot have any proto of its own, hence its easy to delete the properties
 
@@ -28,5 +28,5 @@ delete car2.brand
 console.log(car2.brand) // O/P undefined
 ```
 
-![car2](temp1)
-![car2-1](temp2)
+![car2](https://github.com/RahulTinku/Interview-questions/blob/main/JS/Object%20create/img/temp1.PNG)
+![car2-1](https://github.com/RahulTinku/Interview-questions/blob/main/JS/Object%20create/img/temp2.PNG)
