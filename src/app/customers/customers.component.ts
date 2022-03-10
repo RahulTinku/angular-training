@@ -10,10 +10,12 @@ import { Router } from '@angular/router';
 })
 export class CustomersComponent implements OnInit {
   constructor(private customerService: CustomerService, private route: Router) {
-    this.customers = customerService.getCustomerList();
+    //this.customers = customerService.getCustomerList();
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.reload();
+  }
   selectCustomerId = 0;
   btnLabel = 'Add User';
   details: Customer = new Customer();
@@ -25,39 +27,13 @@ export class CustomersComponent implements OnInit {
     address: '',
     phone: '',
   };
-  // customers = [
-  //   {
-  //     id: 1,
-  //     name: 'Vivek',
-  //     email: 'vivek@abc.com',
-  //     phone: '2356422433',
-  //     address: 'India',
-  //   },
-  //   {
-  //     id: 2,
-  //     name: 'Pratistha',
-  //     email: 'pari@abc.com',
-  //     phone: '28896422433',
-  //     address: 'India',
-  //   },
-  //   {
-  //     id: 3,
-  //     name: 'Samridh',
-  //     email: 'samar@abc.com',
-  //     phone: '2889rr22433',
-  //     address: 'India',
-  //   },
-  //   {
-  //     id: 4,
-  //     name: 'Vishal',
-  //     email: 'vishal@abc.com',
-  //     phone: '28899822433',
-  //     address: 'India',
-  //   },
-  // ];
   deleteCustomer(id: any) {
-    this.customers = this.customers.filter((item) => id !== item.id);
-    this.customerService.setCustomer(this.customers);
+    const deleteRecord = this.customers.filter((item) => id === item.id);
+    this.customerService
+      .deleteCustomerRest(deleteRecord[0])
+      .subscribe((res) => {
+        this.reload();
+      });
   }
   customerDetails(id: any) {
     this.user = this.customers.filter((item) => item.id === id)[0];
@@ -69,9 +45,22 @@ export class CustomersComponent implements OnInit {
   updateCustomer(customer: Customer) {
     console.log('customer id @parent ' + customer.id);
     console.log('new customer name is ' + customer.name);
-    customer.id = this.customers.length + 1;
-    this.customers.push(customer);
-    this.customerService.setCustomer(this.customers);
+    if (customer.id !== 0) {
+      // this.customers.push(customer);
+      this.customerService.updateCustomerRest(customer).subscribe((res) => {
+        this.reload();
+      });
+    }
     //this.router.navigate(['/add-customer']);
+  }
+  gotoCustomer() {
+    this.route.navigate(['/addCustomer']);
+  }
+  reload() {
+    this.customerService.getCustomerListRest().subscribe((res: Customer[]) => {
+      this.customers = res;
+
+      this.customerService.setCustomerCount(this.customers.length + 1);
+    });
   }
 }

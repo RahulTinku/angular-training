@@ -7,10 +7,10 @@ import { Customer } from './customer';
   providedIn: 'root',
 })
 export class CustomerService {
-  constructor() {}
+  constructor(private http: HttpClient) {}
 
   // constructor(private http: HttpClient) { }
-  private baseUrl = 'http://localhost:3000/api/v1/customer';
+  private baseUrl = 'https://nodeapi.pyther.com/customer';
 
   customers: Customer[] = [
     {
@@ -42,6 +42,7 @@ export class CustomerService {
       address: 'India',
     },
   ];
+  count: number = 0;
 
   getCustomer(id: number): Customer {
     return this.customers[0];
@@ -54,6 +55,35 @@ export class CustomerService {
     this.customers = customer;
   }
   getCustomerCount() {
-    return this.customers.length;
+    return this.count;
+  }
+  setCustomerCount(num: number) {
+    this.count = num;
+  }
+  addCustomer(customer: Customer) {
+    this.customers.push(customer);
+  }
+
+  getCustomerRest(id: number): Observable<any> {
+    // check http://localhost:3000/api/customer/2
+    return this.http.get(`${this.baseUrl}/${id}`);
+  }
+
+  createCustomerRest(customer: Object): Observable<Object> {
+    return this.http.post(`${this.baseUrl}`, customer);
+  }
+
+  updateCustomerRest(customer: Object): Observable<Object> {
+    console.log('updateCustomerRest');
+    return this.http.put(`${this.baseUrl}`, customer);
+  }
+
+  deleteCustomerRest(customer: any): Observable<any> {
+    console.log(customer);
+    return this.http.delete(`${this.baseUrl}/${customer.id}`);
+  }
+
+  getCustomerListRest(): Observable<any> {
+    return this.http.get(`${this.baseUrl}`);
   }
 }

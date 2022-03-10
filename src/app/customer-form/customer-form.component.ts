@@ -35,9 +35,8 @@ export class CustomerFormComponent implements OnInit, OnChanges {
   }
 
   addUser() {
-    if (this.details.id === 0) {
-      this.doUpdate.emit(this.details);
-    }
+    this.doUpdate.emit(this.details);
+
     this.reset();
   }
   reset() {
