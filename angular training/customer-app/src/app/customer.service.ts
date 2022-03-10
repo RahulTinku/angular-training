@@ -53,4 +53,7 @@ export class CustomerService {
   setCustomer(customer: Customer[]) {
     this.customers = customer;
   }
+  getCustomerCount() {
+    return this.customers.length;
+  }
 }
