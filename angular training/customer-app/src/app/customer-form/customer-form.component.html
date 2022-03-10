@@ -1,0 +1,27 @@
+<p>customer-form works!</p>
+SelectedId : {{selectId}}
+<!-- <button (click)="updateRequested('rama')">update Parent</button> -->
+
+<form>
+    <div>
+        <label for="name"></label>
+        <input type="text" name="name" id="name" [(ngModel)]="details.name">
+    </div>
+    <div>
+        <label for="email"></label>
+        <input type="email" name="email" id="email" [(ngModel)]="details.email">
+    </div>
+    <div>
+        <label for="address"></label>
+        <input type="address" name="address" id="address" [(ngModel)]="details.address">
+    </div>
+    <div>
+        <label for="phone"></label>
+        <input type="phone" name="phone" id="phone" [(ngModel)]="details.phone">
+    </div>
+    <div>
+        <button type="button" [value]="btnLabel" (click)="addUser()">{{btnLabel}}</button>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <button type="button" (click)="reset()"> Reset</button>
+    </div>
+</form>

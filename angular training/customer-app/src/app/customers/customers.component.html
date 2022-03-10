@@ -1,0 +1,39 @@
+<app-menu></app-menu>
+<div class="page-data">
+    <div>
+        <h2>Customers List</h2>
+    </div>
+
+    <button (click)="selectCustomerId = user.id" class="btn btn-info" style="margin-left: 10px">Select</button>
+    <app-customer-form [selectId]=selectCustomerId (doUpdate)=updateCustomer($event) [details]="details">
+    </app-customer-form>
+
+
+    <div class="data-table">
+        <table border="1" cellpadding="7" cellspacing="7">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Address</th>
+                    <th>Phone</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let customer of customers">
+                    <td>{{customer.id}}</td>
+                    <td>{{customer.name}}</td>
+                    <td>{{customer.email}}</td>
+                    <td>{{customer.address}}</td>
+                    <td>{{customer.phone}}</td>
+                    <td><button (click)="deleteCustomer(customer.id)" class="btn btn-danger">Delete</button>
+                        <button (click)="customerDetails(customer.id)" class="btn btn-info"
+                            style="margin-left: 10px">Details</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

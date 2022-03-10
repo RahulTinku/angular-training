@@ -1,0 +1,57 @@
+<div>
+    <h4>Student Page</h4>
+</div>
+<form>
+    <div>
+        <label for="name">Name</label>
+        <input type="text" name="name" id="name" [(ngModel)]="student.name">
+    </div>
+    <div>
+        <label for="email">email</label>
+        <input type="email" name="email" id="email" [(ngModel)]="student.email">
+    </div>
+    <div>
+        <label for="phone">phone</label>
+        <input type="phone" name="phone" id="phone" [(ngModel)]="student.phone">
+    </div>
+    <div>
+        <label for="address">address</label>
+        <input type="text" name="address" id="address" [(ngModel)]="student.address">
+    </div>
+    <div>
+        <label for="city">city</label>
+        <input type="text" name="city" id="city" [(ngModel)]="student.city">
+    </div>
+    <div>
+        <button type="button" style="padding: 5px;" (click)="add()">{{btnLabel}}</button>
+        <button type="button" (click)="clear()">Reset</button>
+    </div>
+</form>
+
+<table border="1" cellpadding="7" cellspacing="7">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Adress</th>
+            <th>city</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let s of students">
+            <td>{{s.id}}</td>
+            <td>{{s.name}}</td>
+            <td>{{s.email}}</td>
+            <td>{{s.phone}}</td>
+            <td>{{s.address}}</td>
+            <td>{{s.city}}</td>
+            <td><button (click)="deleteStudent(s.id)" class="btn btn-danger">Delete</button>
+                <button (click)="stidentDetails(s.id)" class="btn btn-info" style="margin-left: 10px">Details</button>
+            </td>
+        </tr>
+    </tbody>
+
+</table>
