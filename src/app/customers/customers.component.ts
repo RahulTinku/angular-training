@@ -30,7 +30,7 @@ export class CustomersComponent implements OnInit {
   deleteCustomer(id: any) {
     const deleteRecord = this.customers.filter((item) => id === item.id);
     this.customerService
-      .deleteCustomerRest(deleteRecord[0])
+      .deleteCustomerRest(deleteRecord[0], 'customer')
       .subscribe((res) => {
         this.reload();
       });
@@ -40,6 +40,7 @@ export class CustomersComponent implements OnInit {
     this.selectCustomerId = this.user.id;
     this.btnLabel = 'Update User';
     this.details = this.user;
+    this.route.navigate([`/editCustomer/${this.user.id}`]);
   }
 
   updateCustomer(customer: Customer) {
@@ -47,20 +48,22 @@ export class CustomersComponent implements OnInit {
     console.log('new customer name is ' + customer.name);
     if (customer.id !== 0) {
       // this.customers.push(customer);
-      this.customerService.updateCustomerRest(customer).subscribe((res) => {
-        this.reload();
-      });
+      this.customerService
+        .updateCustomerRest(customer, 'customer')
+        .subscribe((res) => {
+          this.reload();
+        });
     }
-    //this.router.navigate(['/add-customer']);
   }
   gotoCustomer() {
     this.route.navigate(['/addCustomer']);
   }
   reload() {
-    this.customerService.getCustomerListRest().subscribe((res: Customer[]) => {
-      this.customers = res;
-
-      this.customerService.setCustomerCount(this.customers.length + 1);
-    });
+    this.customerService
+      .getCustomerListRest('customer')
+      .subscribe((res: Customer[]) => {
+        this.customers = res;
+        this.customerService.setCustomerCount(this.customers.length);
+      });
   }
 }

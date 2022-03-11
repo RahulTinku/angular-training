@@ -13,6 +13,11 @@ import { MenuComponent } from './menu/menu.component';
 import { StudentComponent } from './student/student.component';
 import { CustomerFormComponent } from './customer-form/customer-form.component';
 import { AddCustomerComponent } from './add-customer/add-customer.component';
+import { EditCustomerComponent } from './edit-customer/edit-customer.component';
+import { AddEditStudentComponent } from './add-edit-student/add-edit-student.component';
+import { HomeComponent } from './home/home.component';
+import { StoreModule } from '@ngrx/store';
+import { counterReducer } from './counter.reducer';
 
 @NgModule({
   declarations: [
@@ -25,8 +30,17 @@ import { AddCustomerComponent } from './add-customer/add-customer.component';
     StudentComponent,
     CustomerFormComponent,
     AddCustomerComponent,
+    EditCustomerComponent,
+    AddEditStudentComponent,
+    HomeComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    FormsModule,
+    HttpClientModule,
+    StoreModule.forRoot({ count: counterReducer }),
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })

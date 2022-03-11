@@ -18,9 +18,11 @@ export class AddCustomerComponent implements OnInit {
   ngOnInit(): void {}
   addUser() {
     //this.details.id = this.customerService.getCustomerCount() + 1;
-    this.customerService.createCustomerRest(this.details).subscribe((res) => {
-      this.route.navigate(['/customers']);
-    });
+    this.customerService
+      .createCustomerRest(this.details, 'customer')
+      .subscribe((res) => {
+        this.route.navigate(['/customers']);
+      });
   }
   reset() {
     this.details = new Customer();

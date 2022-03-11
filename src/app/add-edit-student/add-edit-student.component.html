@@ -1,0 +1,70 @@
+<app-menu></app-menu>
+<form>
+    <table>
+        <tr>
+            <td>
+                <label for="name">Name</label>
+            </td>
+            <td>
+                <input type="text" name="name" id="name" [(ngModel)]="details.name">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="className">className</label>
+            </td>
+            <td>
+                <input type="text" name="className" id="className" [(ngModel)]="details.className">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="parentName">parentName</label>
+            </td>
+            <td>
+                <input type="text" name="parentName" id="parentName" [(ngModel)]="details.parentName">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="schoolName">schoolName</label>
+            </td>
+            <td>
+                <input type="text" name="schoolName" id="schoolName" [(ngModel)]="details.schoolName">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="subject">Subject</label>
+            </td>
+            <td>
+                <input type="text" name="subject" id="subject" [(ngModel)]="sub1">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="subject">Subject</label>
+            </td>
+            <td>
+                <input type="text" name="subject" id="subject" [(ngModel)]="sub2">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="subject">Subject</label>
+            </td>
+            <td>
+                <input type="text" name="subject" id="subject" [(ngModel)]="sub3">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <button type="button" [value]="btnLabel" (click)="addUser()">{{btnLabel}}</button>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            </td>
+            <td>
+                <button type="button" (click)="reset()"> Reset</button>
+            </td>
+        </tr>
+    </table>
+</form>

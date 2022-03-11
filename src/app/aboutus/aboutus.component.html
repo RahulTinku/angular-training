@@ -1,2 +1,7 @@
 <app-menu></app-menu>
-<p>aboutus works!</p>
+
+<div> Current Counter : - {{count$ | async}}</div>
+
+<button (click)="increament()">Increment</button>
+<button (click)="decrement()">Decrement</button>
+<button (click)="reset()">Reset</button>
