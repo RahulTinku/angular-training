@@ -1,0 +1,54 @@
+ref: https://ngrx.io/guide/store
+
+1. Action // event
+2. Dispatch // envoking event 
+3. Listener // actully receiving events (will work)
+
+
+1. View / Component
+2. Action (predefind)  ACTION 
+3. Dispatch | ACTION example = Increment,Decrement and REST
+4. State | {}  
+5. Store will store the current and previous states
+6. Reducer | subscribed to all action  
+ State + ACTION = next State
+7. Observable 
+  State ==> map this to component 
+
+
+
+=> ngrx
+Angular SPA
+component based
+
+A, B, C, D  ==> service ==> RESTAPI
+
+A <=> B | assuming Parent and Child  @input @output
+// Observable 
+
+HTML => Browser ==> Custom Events 
+
+Subscription Pattern 
+
+1. Action // event
+2. Dispatch // envoking event 
+
+3. Listener // actully receiving events (will work)
+
+FLUX 
+
+Problem ?  chatting 
+Real world: ==> 
+Doctor IMA => invention to fix COvind 
+Right source for Truth ==> HR
+
+
+
+const event = new Event('build');
+
+// Listen for the event.
+elem.addEventListener('build', function (e) { /* ... */ }, false);
+
+// Dispatch the event.
+elem.dispatchEvent(event);
+

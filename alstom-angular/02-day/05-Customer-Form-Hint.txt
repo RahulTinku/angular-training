@@ -1,0 +1,45 @@
+
+Hint 
+
+1. chenages in customer-form-component
+----------
+  @Input() selectId: any = 0;
+  @Input() selectCustomer: any =  {
+    id:0, name:'VIvek',email:'',phone:'',address:''
+  }
+  // output function coming from parent , here it is doUpdate 
+  @Output() doUpdate = new EventEmitter<Customer>();
+
+------
+
+2. customer-form.component.html 
+---------
+
+<p>customer-form works!</p>
+SelectId: {{selectId}}
+
+
+<button (click)="updateRequested('Rama')"> update Parent</button>
+
+<form>
+    <H3>Customer Form Component </H3>
+    <input name="name" placeholder="Name" [(ngModel)]="selectCustomer.name" > <br/><br/> 
+    <input name="email" placeholder="Email" [(ngModel)]="selectCustomer.email"> <br/><br/> 
+    <input name="phone" placeholder="Phone" [(ngModel)]="selectCustomer.phone"> <br/><br/> 
+    <input name="address" placeholder="Address" [(ngModel)]="selectCustomer.address"> <br/><br/> 
+    <input type="button" [value]="buttonLabel" (click)="addCustomer()" > &nbsp; &nbsp; 
+    <input type="button" value="Cancel" (click)="resetCustomer()" ><br/><br/> 
+</form>
+
+3.  customer.component.html 
+.
+.
+
+<app-customer-form 
+selectId={{selectCustomerId}} 
+[selectCustomer]="customer" 
+(doUpdate)=updateCustomer($event)>
+</app-customer-form>
+. 
+. 
+

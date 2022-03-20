@@ -1,0 +1,9 @@
+Fundamentals
+-------
+Script 
+Types in JS 
+HTML
+DOM and document and browser as such
+difference between function and functionCall  sum versus sum()
+Passing a function as an argument is very common practice in JS | callback 
+------

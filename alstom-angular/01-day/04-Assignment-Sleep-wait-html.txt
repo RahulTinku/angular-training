@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title> Hello training</title>
+</head>
+<body>
+	<h1> Abc</h1> <br/>
+	<h3> Abc</h3>
+	<label></label>
+    <script>
+        var myPrint =function(msg){
+            console.log(msg);
+        }
+        myCounter = function(caller, count){
+            for (var index = 0; index < count; index++) {
+                // Assignment add sleep of 1 second
+                // OK for Internet Help
+                // Don't use Async and await
+                myPrint(caller + ": "+ index + " seconds are over.")   
+            }
+        }
+    </script>
+	<form>
+		<input type="text" name="" value="Vivek" /><br/><br/>
+		<input type="password" name=""><br/><br/>
+		<input type="color" name=""><br/><br/>
+		<input type="button" name="" value="B1" onclick="myCounter('B1', 15)" ><br/><br/>
+        <input type="button" name="" value="B2" onclick="myCounter('B2', 20)"><br/><br/>
+	</form>
+</body>
+</html>

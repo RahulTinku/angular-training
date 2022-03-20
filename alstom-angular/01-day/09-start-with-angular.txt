@@ -1,0 +1,16 @@
+// 1. install  ng program on your machine
+npm install -g @angular/cli
+
+// 2. this create standard hello world project 
+ng new helloApp
+
+// 3. go to the project and install lib / modules
+cd helloApp 
+npm install
+
+// 4. install ng to run server after compile our code
+ng serve
+// our code compiles from TypeScript to JavaScript
+
+open
+http://localhost:4200/

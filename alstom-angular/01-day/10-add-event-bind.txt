@@ -1,0 +1,27 @@
+Step 1: update app.conponent.html
+-----
+<div>
+  Hello World <br/>
+  <input type="button" name="" value="login" 
+		(click)="doLogin()">
+</div>
+------
+
+
+Step 2: update app.conponent.ts
+-------
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
+})
+export class AppComponent {
+  title = 'helloApp';
+  doLogin= () =>{
+    alert("Hello login");
+  }
+}
+
+---------

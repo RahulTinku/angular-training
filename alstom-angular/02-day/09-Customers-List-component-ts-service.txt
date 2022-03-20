@@ -1,0 +1,45 @@
+
+User Customer Service
+-----
+1. Implement service as ref
+https://training.pyther.com/alstom-angular/02-day/08-customer-service-crud.txt
+
+Changes in customers.component.ts 
+------
+.
+.
+import {CustomerService} from '../customer.service'
+import { Router } from '@angular/router';
+.
+.
+
+  
+  customers:Customer[] = [];
+  constructor(private router: Router, private customerService:CustomerService ) {
+    this.customers = customerService.getCustomerList();
+ }
+
+  /*
+  customers = [
+    {id:1,name:'Vivek',email:'vivek@abc.com',phone:'2356422433', address:'India'},
+    {id:2,name:'Pratistha',email:'pari@abc.com',phone:'28896422433', address:'India'},
+    {id:3,name:'Samridh',email:'samar@abc.com',phone:'2889rr22433', address:'India'},
+    {id:4,name:'Vishal',email:'vishal@abc.com',phone:'28899822433', address:'India'}
+  ];*/
+
+.
+.
+.
+.
+  deleteCustomer(id:number){
+    console.log(">> deleteCustomer "+id)
+    //this.customers = this.customers.filter((record)=>(record.id != id))
+    this.customerService.deleteCustomer(id);
+    this.customers = this.customerService.getCustomerList();
+  }
+
+  .
+
+  .
+  .
+

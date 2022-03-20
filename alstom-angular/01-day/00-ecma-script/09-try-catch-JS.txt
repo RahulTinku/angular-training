@@ -1,0 +1,13 @@
+try, catch, throw and finally exist in JavaScript as well
+https://www.w3schools.com/js/js_errors.asp
+
+The try statement lets you test a block of code for errors.
+
+The catch statement lets you handle the error.
+
+The throw statement lets you create custom errors.
+
+The finally statement lets you execute code, after try and catch, regardless of the result.
+
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/throw
+

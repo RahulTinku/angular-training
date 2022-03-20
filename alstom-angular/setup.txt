@@ -1,0 +1,13 @@
+setup for Angular training
+1. nodejs (https://nodejs.org/en/) version 16
+2. Sublime txt3 (https://www.sublimetext.com/3)
+3. VS Code (https://code.visualstudio.com/)
+4. Chrome (browser)
+
+
+hardware:
+---
+Minimum 8GB RAM
+good internet + admin previlage
+
+

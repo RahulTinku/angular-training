@@ -1,0 +1,70 @@
+Adding third party library
+========
+
+https://www.npmjs.com/package/ngx-order-pipe
+
+$>cd helloApp
+
+1) install lib
+npm install  ngx-order-pipe --save
+
+
+2) adding in app.module.ts
+----
+.
+.
+.
+
+import { OrderModule } from 'ngx-order-pipe';
+ 
+.
+.
+  imports: [
+    BrowserModule,
+    FormsModule,
+    AppRoutingModule,
+    HttpClientModule,
+    OrderModule
+  ],
+.
+.
+
+-----
+
+3) lets implement in dashboard component
+
+dashboard.component.html
+-----
+<app-menu></app-menu>
+<p>dashboard works!</p>
+	<ul>
+      <li *ngFor="let item of array | orderBy: order">
+        {{ item.name }}
+      </li>
+    </ul> 
+-------
+
+4) dashboard.component.ts
+------
+import { Component, OnInit } from '@angular/core';
+import { OrderPipe } from 'ngx-order-pipe';
+
+@Component({
+  selector: 'app-dashboard',
+  templateUrl: './dashboard.component.html',
+  styleUrls: ['./dashboard.component.css']
+})
+export class DashboardComponent implements OnInit {
+
+  constructor(private orderPipe: OrderPipe) {
+  	console.log(this.orderPipe.transform(this.array, this.order));
+   }
+  array: any[] = [{ name: 'John'} , { name: 'Mary' }, { name: 'Adam' }];
+  order: string = 'name';
+
+  ngOnInit() {
+  }
+
+}
+
+

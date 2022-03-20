@@ -1,0 +1,43 @@
+implement 
+hide / show in Aboutus Component
+-----
+
+Step 1: aboutus.component.html
+----
+<app-menu></app-menu>
+<p>aboutus works!</p>
+
+<div *ngIf="toShowOrHide" >  To Hide or Show</div>
+
+<div [style.visibility]="byStyle" >  To Hide or Show</div>
+
+<button (click)="onButtonClick()"> Hide / Show </button>
+-------
+
+Step 2: aboutus.component.ts
+-------
+import { Component, OnInit } from '@angular/core';
+
+@Component({
+  selector: 'app-aboutus',
+  templateUrl: './aboutus.component.html',
+  styleUrls: ['./aboutus.component.css']
+})
+export class AboutusComponent implements OnInit {
+
+  constructor() { }
+  toShowOrHide = true;
+  byStyle = 'visible';
+  ngOnInit() {
+  
+  }
+  onButtonClick(){
+  	this.toShowOrHide = !this.toShowOrHide;
+  	if(this.toShowOrHide){
+  		this.byStyle = 'visible';
+  	}else{
+  		this.byStyle = 'hidden';
+  	}
+  }
+}
+--------

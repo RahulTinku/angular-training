@@ -1,0 +1,91 @@
+
+Lets manage customer data with Service
+-------
+Step 1. create Customer Service
+--
+ng g class Customer
+ng g service Customer
+
+
+Step 2.
+Update Customer.ts
+------
+export class Customer {
+    id: number =0;
+    name: string ="";
+    email: string="";
+    phone: string="";
+    address: string="";
+}
+--------
+
+Step 3:
+update code in customer.service.ts
+------
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import {Customer} from './customer';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class CustomerService {
+ // constructor(private http: HttpClient) { }
+  private baseUrl = 'http://localhost:3000/api/v1/customer';
+
+    customers:Customer[] = [
+  	{id:1,name:'Vivek',email:'vivek@abc.com',phone:'2356422433', address:'India'},
+	{id:2,name:'Pratistha',email:'pari@abc.com',phone:'28896422433', address:'India'},
+	{id:3,name:'Samridh',email:'samar@abc.com',phone:'2889rr22433', address:'India'},
+	{id:4,name:'Vishal',email:'vishal@abc.com',phone:'28899822433', address:'India'}
+	];
+
+    getCustomer(id: number): Customer{
+    return this.customers[0];
+  }
+
+  getCustomerList():Customer[] {
+    return this.customers;
+  }
+}
+
+------
+
+Step 4:
+changes in customers.component.ts
+-----
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { CustomerService } from '../customer.service';
+import { Customer } from '../customer';
+
+@Component({
+  selector: 'app-customers',
+  templateUrl: './customers.component.html',
+  styleUrls: ['./customers.component.css']
+})
+export class CustomersComponent implements OnInit {
+	customers = [];
+    constructor(private router: Router, private customerService:CustomerService ) {
+    	this.customers = customerService.getCustomerList();
+   }
+
+	deleteCustomer(id){
+		var tempCustomers = [];
+		for (var i = 0; i < this.customers.length ; i++) {
+			if(id != this.customers[i].id){
+				tempCustomers.push(this.customers[i]);
+			}
+		}
+		this.customers = tempCustomers;
+		console.log('deleteCustomer: '+id);
+	}
+	customerDetails(id){
+		console.log('customerDetails: '+id);
+	}
+
+  ngOnInit() {
+  }
+
+}

@@ -1,0 +1,130 @@
+angular subject
+Two distant components can talk
+---
+
+Step 1. create project, components and service
+$> ng new angular-subject
+// Enter No to Router
+
+$> cd angular-subject
+$> ng g component home
+$> ng g service message
+
+
+Step 2.
+// update service message.service.ts
+-------------
+import { Injectable } from '@angular/core';
+import { Subject } from 'rxjs';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class MessageService {
+
+  constructor() { }
+  public message = new Subject<string>();
+  setMessage(value: string) {
+    this.message.next(value); //it is publishing this value to all the subscribers that have already subscribed to this message
+  }
+}
+-------------
+
+Step 3:
+// update home.component.ts
+--------
+import { Component, OnInit } from '@angular/core';
+import { MessageService } from '../message.service';
+
+@Component({
+  selector: 'app-home',
+  templateUrl: './home.component.html',
+  styleUrls: ['./home.component.css']
+})
+export class HomeComponent implements OnInit {
+
+  constructor(public messageService:MessageService) { }
+
+  ngOnInit() {
+  }
+   setMessage(event:any) {
+    console.log(event.value);
+    this.messageService.setMessage(event.value);
+  }
+}
+--------
+
+Step 4:
+// update home.component.html
+-------
+<input type="text" placeholder="Enter message" #message>
+<button type="button" (click)="setMessage(message)" >Send message</button>
+-------
+
+Step 5: 
+//update app.component.ts
+--------
+import { Component } from '@angular/core';
+import { MessageService } from './message.service';
+import { Subscription } from 'rxjs';
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
+})
+export class AppComponent {
+  title = 'angular-subject';
+  message: string="";
+  subscription: Subscription = new Subscription();  
+  constructor(public messageService: MessageService) { }
+  ngOnInit() {
+    this.subscription = this.messageService.message.subscribe(
+      (message) => {
+        this.message = message;
+      }
+    );
+  }
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
+  }
+}
+----------
+
+Step 6: 
+//update app.component.html
+----------
+<div *ngIf="message">
+  {{message}}
+</div>
+<app-home></app-home>
+-------
+
+Step 7: run and check
+----
+$> ng serve
+
+----
+
+
+
+1. Subject => (Custom Event)
+
+2. subscriber 
+------
+    this.subscription = this.messageService.message.subscribe(
+      (message) => {
+        this.message = message;
+      }
+    );
+-------
+
+3. set Message
+====
+  public message = new Subject<string>();
+  	setMessage(value: string) {
+    this.message.next(value); //it is publishing this value to all the subscribers that have already subscribed to this message
+  }
+---
+
+

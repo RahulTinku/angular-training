@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title> Hello training</title>
+</head>
+<body>
+	<h1> Abc</h1>
+	<h3> Abc</h3>
+	<label></label>
+	<form>
+		<input type="text" name="" value="Vivek"><br/><br/>
+		<input type="password" name=""><br/><br/>
+		<input type="color" name=""><br/><br/>
+		<input type="button" name="" value="Submit"><br/><br/>
+	</form>
+</body>
+</html>

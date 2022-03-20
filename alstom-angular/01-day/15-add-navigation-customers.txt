@@ -1,0 +1,61 @@
+1. create another component say Customers
+  $> ng g component Customers
+
+2. Add router in app-routing.module.ts
+.
+.
+.
+  { path: 'customers', component: CustomersComponent },
+.
+.
+
+3. Lets implement successful login to => '/customers'
+
+open login.component.ts
+add the following
+-----
+.
+.
+import { Router } from '@angular/router';
+.
+.
+  constructor(private router: Router) { }
+.
+.
+
+this.router.navigate(['/customers']);
+login.comonent.ts
+------
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+
+@Component({
+  selector: 'app-login',
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.css']
+})
+export class LoginComponent implements OnInit {
+
+  constructor(private router: Router) {
+   }
+ 
+  user = {
+    username:"test",
+    password:"test",
+  }
+  
+  ngOnInit() {
+  }
+  doLogin(){
+     let a:string = '47';
+     let b:number = 100; 
+     console.log("Value of a= "+a);
+    if(this.user.username == this.user.password){
+      this.router.navigate(['/customers']);
+      //alert('Login Success');
+    }else{
+      alert('Login Failed');
+    }
+  }
+}
+

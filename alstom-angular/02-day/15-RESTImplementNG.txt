@@ -1,0 +1,81 @@
+
+Steps for REST customer connect
+-----------
+1. Add support for http module
+
+In app.module.ts
+------
+.
+.
+import { HttpClientModule } from '@angular/common/http';
+.
+.
+  imports: [
+    BrowserModule,
+    FormsModule,
+    AppRoutingModule,
+    HttpClientModule
+  ],
+.
+.
+.
+--------------
+
+
+Step 2.
+Made change in customer.service.ts
+// update baseUrl
+-------
+.
+.
+constructor(private http: HttpClient) { }
+ private baseUrl = 'http://localhost:3000/api/customer';
+ .
+ .
+ .
+ //add REST methods
+getCustomerRest(id: number): Observable<any> {
+    // check http://localhost:3000/api/customer/2
+    return this.http.get(`${this.baseUrl}/${id}`);
+  }
+
+  createCustomerRest(customer: Object): Observable<Object> {
+    return this.http.post(`${this.baseUrl}`, customer);
+  }
+
+  updateCustomerRest(customer: Object): Observable<Object> {
+    return this.http.put(`${this.baseUrl}`, customer);
+  }
+
+  deleteCustomerRest(customer: Customer): Observable<any> {
+    console.log("customer::",customer);
+    return this.http.request('delete', `${this.baseUrl}`+"/"+customer.id)
+    //return this.http.delete(`${this.baseUrl}`,customer);
+  }
+
+  getCustomerListRest(): Observable<any> {
+    return this.http.get(`${this.baseUrl}`);
+  }
+  .
+  .
+  --------------
+
+  Step 3: Changes in customers.component.ts
+  -------
+      constructor(private router: Router, private customerService:CustomerService ) {
+      	//lets handle in reloadData function
+    	//this.customers = customerService.getCustomerList();
+   }
+   
+   ngOnInit() {
+    this.reloadData();
+  }
+
+  reloadData() {
+    this.customerService.getCustomerListRest().subscribe((data )=>{
+    	this.customers = data;
+    });
+  }
+
+
+

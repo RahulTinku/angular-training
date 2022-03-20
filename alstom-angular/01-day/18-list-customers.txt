@@ -1,0 +1,86 @@
+
+Lets implements Customers List:
+--------
+
+Step 1.
+----
+update code in customers.component.html
+----
+<app-menu></app-menu>
+<div class="page-data">
+    <div>
+      <h2>Customers List</h2>
+    </div>
+    <div class="data-table">
+      <table  border="1" cellpadding="7" cellspacing="7">
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Address</th>
+            <th>Phone</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let customer of customers">
+            <td>{{customer.id}}</td>
+            <td>{{customer.name}}</td>
+            <td>{{customer.email}}</td>
+            <td>{{customer.address}}</td>
+            <td>{{customer.phone}}</td>
+            <td><button (click)="deleteCustomer(customer.id)" class="btn btn-danger">Delete</button>
+                <button (click)="customerDetails(customer.id)" class="btn btn-info" style="margin-left: 10px">Details</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+-----
+
+
+Step 2: Update code in customers.component.ts
+
+--------
+import { Component, OnInit } from '@angular/core';
+
+@Component({
+  selector: 'app-customers',
+  templateUrl: './customers.component.html',
+  styleUrls: ['./customers.component.css']
+})
+export class CustomersComponent implements OnInit {
+
+  constructor() { }
+  customers = [
+    {id:1,name:'Vivek',email:'vivek@abc.com',phone:'2356422433', address:'India'},
+  {id:2,name:'Pratistha',email:'pari@abc.com',phone:'28896422433', address:'India'},
+  {id:3,name:'Samridh',email:'samar@abc.com',phone:'2889rr22433', address:'India'},
+  {id:4,name:'Vishal',email:'vishal@abc.com',phone:'28899822433', address:'India'}
+  ];
+
+  ngOnInit() {
+  }
+---------
+
+
+Step 3:
+----------
+Understand structural directive *ngFor
+
+<tr *ngFor="let customer of customers">
+---------
+
+Step 4:
+-------
+Implement 
+delete 
+
+  deleteCustomer(id:number){
+    console.log(">> deleteCustomer "+id)
+    this.customers = this.customers.filter((record)=>(record.id != id))
+  }
+
+

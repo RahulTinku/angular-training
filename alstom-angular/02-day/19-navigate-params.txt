@@ -1,0 +1,31 @@
+
+Step X:
+-----
+  { path: 'update-customer/:id', component: UpdateCustomerComponent },
+
+
+Step Y:
+-----
+.
+.
+import { Router, ActivatedRoute } from '@angular/router';
+.
+.
+
+
+  constructor(private route: ActivatedRoute,private router: Router,
+    private customerService: CustomerService) { }
+.
+.
+.
+.
+  ngOnInit() {
+  	this.id = this.route.snapshot.params['id'];
+  }
+
+}
+
+Step Z:
+-----
+this.router.navigate(['update-customer', id]);
+

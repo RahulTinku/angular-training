@@ -1,0 +1,6 @@
+Assignment:
+1. Implement component Student (ng g )
+2. Add it to Menu / Routes
+3. Student should have following fields:  {id,name,email,phone,address,city}
+4. Student CRUD should Work (similar to Customer)
+

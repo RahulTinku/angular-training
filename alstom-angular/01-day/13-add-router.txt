@@ -1,0 +1,59 @@
+//assigned devices 
+
+1. create app-routing.module.ts under app
+----
+import { NgModule } from '@angular/core';
+import { Routes, RouterModule } from '@angular/router';
+import { LoginComponent } from './login/login.component';
+
+
+
+const routes: Routes = [
+  { path: '', redirectTo: 'login', pathMatch: 'full' },
+  { path: 'login', component: LoginComponent },
+];
+
+
+@NgModule({
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule]
+})
+export class AppRoutingModule { }
+----
+
+2. add this app.module.ts
+--
+import { AppRoutingModule } from './app-routing.module';
+
+.
+.
+..
+  imports: [
+    BrowserModule,
+    FormsModule,
+    AppRoutingModule
+  ],
+
+
+// check app
+
+4. update app.component.html
+------
+<div> <h2>{{title}}</h2></div><br>
+<router-outlet></router-outlet>
+------
+
+3. create another component say Dashboard and Aboutus
+	$> ng g component Dashboard
+	$> ng g component Aboutus
+
+
+4. Configure them in  app-routing.module.ts similar to LoginComponent
+
+
+5. Now check 
+http://localhost:4200/login
+http://localhost:4200/dashboard
+http://localhost:4200/aboutus
+
+

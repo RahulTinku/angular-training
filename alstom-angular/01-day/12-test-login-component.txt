@@ -1,0 +1,16 @@
+add it on app.component.html
+-------
+<div>
+  Hello World <br/>
+  <app-login></app-login><br/>
+  <app-login></app-login><br/>
+  <app-login></app-login><br/>
+  <app-login></app-login><br/>
+  <app-login></app-login><br/>
+  <app-login></app-login><br/>
+  <input type="button" name="" value="login" 
+		(click)="doLogin()">
+</div>
+<router-outlet></router-outlet>
+
+

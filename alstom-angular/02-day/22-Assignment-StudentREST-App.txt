@@ -1,0 +1,18 @@
+
+Add Student CRUD with REST API (similar to Customer API)
+
+1. REFER REST API
+https://nodeapi.pyther.com/api/student
+object
+{className,id,name, parentName,schoolName,subjects}
+
+sample: {className: "Computer Science"
+id: "bd7acbea-c1b1-46c2-aed5-3ad53abb28ba"
+name: "Bob"
+parentName: "Christian"
+schoolName: "MIT"
+subjects: (3) ['Maths', 'Science', 'AI']}
+
+
+2. In menu student Option
+CRUD , use studentService for REST API 

@@ -1,0 +1,13 @@
+DataTypes in JavaScript:
+------
+1. number | g =90
+2. string | email= 'vivek@gmail.com'
+3. boolean | b = true
+4. undefined
+5. object | obj = {name:"Rama"}
+6. sum = function (a,b){return a+b;}
+
+7. bigInt
+8. symbol
+
+typeof(g)

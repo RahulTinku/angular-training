@@ -1,0 +1,13 @@
+// $> npm install -g ts-node
+
+// ----- hello.ts ----
+const world = 'world';
+// var s:number = 90;
+function hello(word: string = world): string {
+  return `Hello ${world}! `;
+}
+
+console.log(hello());
+
+//how to run in CMD
+//$> ts-node hello.ts

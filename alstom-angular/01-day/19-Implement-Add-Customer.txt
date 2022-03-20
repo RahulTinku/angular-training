@@ -1,0 +1,28 @@
+
+
+1. Add Customer (HInt) Under customers.component.html
+----
+<form>
+<input name="name" placeholder="Name" [(ngModel)]="customer.name" > <br/><br/> 
+<input name="email" placeholder="Email" [(ngModel)]="customer.email"> <br/><br/> 
+<input name="phone" placeholder="Phone" [(ngModel)]="customer.phone"> <br/><br/> 
+<input name="address" placeholder="Address" [(ngModel)]="customer.address"> <br/><br/> 
+<input type="button" value="Add" (click)="addCustomer()" > <br/><br/> 
+</form>
+-----
+
+
+2. Under customers.component.ts
+--------
+resetCustomer(){
+    console.log(">>resetCustomer")
+    this.customer = {
+      id:0, name:'',email:'',phone:'',address:''
+    }
+  }
+
+  addCustomer(){
+    console.log(">>addCustomer")
+    this.customer.id = Date.now();
+    this.customers.push(this.customer);
+  }

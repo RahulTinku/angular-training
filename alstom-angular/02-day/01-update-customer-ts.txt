@@ -1,0 +1,62 @@
+import { Component, OnInit } from '@angular/core';
+
+@Component({
+  selector: 'app-customers',
+  templateUrl: './customers.component.html',
+  styleUrls: ['./customers.component.css']
+})
+export class CustomersComponent implements OnInit {
+  constructor() { }
+  buttonLabel:string = "Add";
+
+  customer = {
+    id:0, name:'',email:'',phone:'',address:''
+  }
+  customers = [
+    {id:1,name:'Vivek',email:'vivek@abc.com',phone:'2356422433', address:'India'},
+    {id:2,name:'Pratistha',email:'pari@abc.com',phone:'28896422433', address:'India'},
+    {id:3,name:'Samridh',email:'samar@abc.com',phone:'2889rr22433', address:'India'},
+    {id:4,name:'Vishal',email:'vishal@abc.com',phone:'28899822433', address:'India'}
+  ];
+  resetCustomer(){
+    console.log(">>resetCustomer")
+    this.buttonLabel = "Add";
+    this.customer = {
+      id:0, name:'',email:'',phone:'',address:''
+    }
+  }
+  addCustomer(){ //addAndUpdate
+    if(this.customer.id == 0 ){
+      this.customer.id = Date.now();
+      this.customers.push(this.customer);
+    }else{ 
+       this.customers.map(
+        (record,index)=>{
+          if(record.id == this.customer.id){
+            this.customers[index] =  this.customer;
+          }
+        });
+    }
+    this.resetCustomer();
+  }
+  deleteCustomer(id:number){
+    console.log(">> deleteCustomer "+id)
+    this.customers = this.customers.filter((record)=>(record.id != id))
+  }
+  customerDetails(id:number){
+    this.buttonLabel = "Update"; // Button value = "Update"
+    let customerList = this.customers.filter((record)=>(record.id == id))
+    if(customerList.length > 0){
+      // object is pointer (same object)
+      // this.customer = customerList[0]; //this will show record to form
+      // object copy 
+      this.customer = {...customerList[0]}; 
+    }
+    console.log(">> customerDetails ")
+  }
+
+  ngOnInit(): void {
+    console.log("On init of Customer Comp")
+  }
+}
+

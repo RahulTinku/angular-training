@@ -1,0 +1,14 @@
+
+cd workspace
+ng new angular-guard
+Use routing YES
+
+cd angular-guard   
+
+download https://training.pyther.com/alstom-angular/03-day/10-angular-guard-src.zip
+
+delete src folder from angular-guard
+update src from 10-angular-guard-src.zip
+
+$> ng serve
+

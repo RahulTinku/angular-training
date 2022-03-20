@@ -1,0 +1,8 @@
+hello = function(){console.log('hello: ')}
+setTimeout(hello,1000);
+// setTimeout received first argument as function
+
+helloName = function(name){console.log('hello: '+name)}
+setTimeout(helloName("Vivek"),1000);
+// setTimeout received first argument as undefined
+

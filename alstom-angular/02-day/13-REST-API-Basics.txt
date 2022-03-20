@@ -1,0 +1,13 @@
+REST API
+http + EndPoint + Method
+1. https://nodeapi.pyther.com/customer (GET) => get all data
+2. https://nodeapi.pyther.com/customer (POST) => add new Record
+3. https://nodeapi.pyther.com/customer (PUT) => update a Record
+4. https://nodeapi.pyther.com/customer (DELETE) => delete a Record
+5. https://nodeapi.pyther.com/customer/:id 
+
+Angular / React / Vue
+Server
+REST APIs
+
+customer service => Request server

@@ -1,0 +1,119 @@
+Implement Add Customer
+-----------------
+Step 1: Create a component AddCustomer
+$> ng g component  AddCustomer
+
+
+Step 2: Add button in customers.component.html name it 'Add Customer'
+
+and 
+
+Step 3: Add navigation in add-customer.component.ts
+---------
+	goAddCustomer(){
+		this.router.navigate(['/add-customer']);
+	}
+---------
+
+Step 4: add add-customer entry in app-router.module
+---
+.
+.
+  { path: 'aboutus', component: AboutusComponent },
+  { path: 'dashboard', component: DashboardComponent },
+  { path: 'customers', component: CustomersComponent },
+  { path: 'add-customer', component: AddCustomerComponent }
+..
+.
+.
+
+
+Step 5: add-customer.component.html
+-------
+<div>
+	<form>
+		<input type="text" placeholder="name" [(ngModel)]="customer.name"  ng-model-options="{ updateOn: 'blur' }" name=""  [ngModelOptions]="{standalone: true}"><br><br>
+		<input type="text" placeholder="email" [(ngModel)]="customer.email"  ng-model-options="{ updateOn: 'blur' }" name=""  [ngModelOptions]="{standalone: true}"><br><br>
+		<input type="text" placeholder="phone" [(ngModel)]="customer.phone"  ng-model-options="{ updateOn: 'blur' }" name=""  [ngModelOptions]="{standalone: true}"><br><br>
+		<input type="text" placeholder="address" [(ngModel)]="customer.address"  ng-model-options="{ updateOn: 'blur' }" name=""  [ngModelOptions]="{standalone: true}"><br><br>
+
+		<input type="button" name="" value="Add Customer" 
+		(click)="addCustomer()">
+	</form>
+</div>
+--------------
+
+Step 6:
+add-customer.component.ts
+------------ 
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { CustomerService } from '../customer.service';
+import { Customer } from '../customer';
+
+@Component({
+  selector: 'app-add-customer',
+  templateUrl: './add-customer.component.html',
+  styleUrls: ['./add-customer.component.css']
+})
+export class AddCustomerComponent implements OnInit {
+  customer : Customer;
+  constructor(private router: Router,private customerService:CustomerService) {
+  	this.customer = new Customer();
+  	//this.customerService = customerService;
+   }
+
+  ngOnInit() {
+  }
+  addCustomer(){
+  	this.customerService.customerAdd(this.customer);
+    this.router.navigate(['/customers']);
+  }
+}
+
+-----
+
+Step 7: Make sure we have customer.service.ts
+--------
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import {Customer} from './customer';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class CustomerService {
+ // constructor(private http: HttpClient) { }
+  private baseUrl = 'http://localhost:3000/api/v1/customer';
+
+    customers:Customer[] = [
+  	{id:1,name:'Vivek',email:'vivek@abc.com',phone:'2356422433', address:'India'},
+	{id:2,name:'Pratistha',email:'pari@abc.com',phone:'28896422433', address:'India'},
+	{id:3,name:'Samridh',email:'samar@abc.com',phone:'2889rr22433', address:'India'},
+	{id:4,name:'Vishal',email:'vishal@abc.com',phone:'28899822433', address:'India'}
+	];
+
+  getCustomer(id: number): Customer{
+    return this.customers[0];
+  }
+  deleteCustomer(id: number){
+  	var tempCustomers = [];
+		for (var i = 0; i < this.customers.length ; i++) {
+			if(id != this.customers[i].id){
+				tempCustomers.push(this.customers[i]);
+			}
+		}
+		this.customers = tempCustomers;
+  }
+  customerAdd(customer:Customer){
+    customer.id = Math.floor(Math.random()*1000000);
+    this.customers.push(customer);
+  }
+  getCustomerList():Customer[] {
+    return this.customers;
+  }
+}
+
+
+

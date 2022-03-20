@@ -1,0 +1,68 @@
+// REST service CustomerService.ts
+
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import {Customer} from './customer';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class CustomerService {
+  constructor(private http: HttpClient) { }
+  //private baseUrl = 'http://localhost:3000/api/customer';
+  private baseUrl = 'https://nodeapi.pyther.com/customer';
+  
+  getCustomerRest(id: number): Observable<any> {
+    return this.http.get(`${this.baseUrl}/${id}`);
+  }
+
+  createCustomerRest(customer: Object): Observable<Object> {
+    return this.http.post(`${this.baseUrl}`, customer);
+  }
+
+  updateCustomerRest(customer: Customer): Observable<Object> {
+    return this.http.put(`${this.baseUrl}`, customer);
+  }
+
+  deleteCustomerRest(customer: Customer): Observable<any> {
+    console.log("customer::",customer);
+    return this.http.request('delete', `${this.baseUrl}`+"/"+customer.id,{body:customer})
+    //return this.http.delete(`${this.baseUrl}`,customer);
+  }
+
+  getCustomerListRest(): Observable<any> {
+    return this.http.get(`${this.baseUrl}`);
+  }
+
+  customers:Customer[] = [
+    {id:1,name:'Vivek S',email:'vivek@abc.com',phone:'2356422433', address:'India'},
+    {id:2,name:'Pratistha S',email:'pari@abc.com',phone:'28896422433', address:'India'},
+    {id:3,name:'Samridh S',email:'samar@abc.com',phone:'2889rr22433', address:'India'},
+    {id:4,name:'Vishal S',email:'vishal@abc.com',phone:'28899822433', address:'India'}
+    ];
+
+    getCustomer(id: number): Customer{
+    return this.customers[0];
+  }
+
+  getCustomerList():Customer[] {
+    return this.customers;
+  }
+  customerAdd(customer:Customer){
+    customer.id = Math.floor(Math.random()*1000000);
+    this.customers.push(customer);
+  }
+  updateCustomer(customer: Customer){
+    for (var i = 0; i < this.customers.length; i++) {
+      if(customer.id == this.customers[i].id){
+        this.customers[i] = customer;
+        break;
+      }
+    }
+  }
+  deleteCustomer(id: number){
+  	this.customers = this.customers.filter((record)=>(record.id != id)) ;
+  }
+}
+

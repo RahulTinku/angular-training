@@ -1,0 +1,29 @@
+NGRX assignment
+
+Refer project
+https://training.pyther.com/alstom-angular/03-day/04-angular-state-management-v2-main.zip
+
+1. Understand action, reducer and state
+2. Implement Action "deleteALLCustomer" in file customer.actions.ts
+
+export const deleteALLCustomer = createAction(
+  '[Customer] DeleteAll',
+  () => ({})
+);
+
+3. Implement reducer in file customer.reducer.ts
+--
+  on(CustomerActions.addCustomer,
+    (state: CustomerState, {customer}) =>{
+      console.log("current state ",state);
+      let nextState = ({...state,
+        customers: [...state.customers, customer]
+      })
+      console.log("next state ",nextState);
+      return nextState;
+    })
+---    
+
+4. Call this action "deleteALLCustomer" from  customer-view on deleteAll button
+------
+

@@ -1,0 +1,120 @@
+
+------
+1. Add @ngrx/store module
+cd customerAppCRUD
+$> npm i @ngrx/store
+
+---
+2. Actions add a file under app 
+src/app/ counter.actions.ts
+----
+import { createAction } from '@ngrx/store';
+
+export const increment = createAction('[Counter Component] Increment');
+export const decrement = createAction('[Counter Component] Decrement');
+export const reset = createAction('[Counter Component] Reset');
+-----
+
+3. Add counter reducer 
+src/app/counter.reducer.ts
+-----
+import { createReducer, on } from '@ngrx/store';
+import { increment, decrement, reset } from './counter.actions'; // actions
+
+export const initialState = 1;
+
+const _counterReducer = createReducer(
+  initialState,
+  on(increment, (state) => {
+    console.log("reducer a pure function");
+    return (state + 1)
+    }), //subscribe
+  on(decrement, (state) => state - 1),
+  on(reset, (state) => 0)
+);
+
+//(state) => state + 1
+
+export function counterReducer(state:any, action:any) {
+  return _counterReducer(state, action);
+}
+-------
+
+4. Add Store / Reducer to app.moudule.ts
+----
+.
+.
+import { StoreModule } from '@ngrx/store';
+import { counterReducer } from './counter.reducer';
+.
+.
+    StoreModule.forRoot({ count: counterReducer })
+.
+.
+
+
+5. Append following in aboutus.component.html
+----
+<button (click)="increment()">Increment</button>
+
+<div>Current Count: {{ count$ | async }}</div>
+
+<button (click)="decrement()">Decrement</button>
+
+<button (click)="reset()">Reset Counter</button>
+-----
+
+6. Append following in aboutus.component.ts
+---
+.
+.
+.
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
+import { increment, decrement, reset } from '../counter.actions';
+
+.
+.
+.
+  count$: Observable<number>;
+ 
+  constructor(private store: Store<{ count: number }>) {
+    this.count$ = store.select('count');
+  }
+ 
+  increment() {
+    this.store.dispatch(increment());
+  }
+ 
+  decrement() {
+    this.store.dispatch(decrement());
+  }
+ 
+  reset() {
+    this.store.dispatch(reset());
+  }
+
+
+-------
+
+7. Also, listen this in Dashboard 
+Append following in dashboard.component.ts
+----
+
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
+
+.
+.
+.
+
+  count$: Observable<number>;
+ 
+  constructor(private store: Store<{ count: number }>) {
+    this.count$ = store.select('count');
+  }
+
+----
+8. Also, show in Dashboard   dashboard.component.html
+----
+<div>Current Count: {{ count$ | async }}</div>

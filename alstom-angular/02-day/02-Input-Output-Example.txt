@@ -1,0 +1,68 @@
+
+Making Parent / Child talk
+----------
+1. create a component lets call it costomerForm
+$> ng g component CustomerForm
+
+2. Lets implement child first
+customer-form.component.html
+-----
+<p>customer-form works!</p>
+SelectId: {{selectId}}
+<button (click)="updateRequested('Rama')"> update Parent</button>
+-----
+
+3. //customer-form.component.ts
+-------
+import { Component, OnInit,Input,Output, EventEmitter } from '@angular/core';
+import { Customer } from '../customer';
+
+@Component({
+  selector: 'app-customer-form',
+  templateUrl: './customer-form.component.html',
+  styleUrls: ['./customer-form.component.css']
+})
+export class CustomerFormComponent implements OnInit {
+
+  constructor() { }
+
+  @Input() selectId: number;
+  @Output() doUpdate = new EventEmitter<Customer>();
+
+  updateRequested(name:string){
+  	var customer:Customer = new Customer();
+  	customer.name = name; //'Rama'
+  	customer.id = this.selectId;
+  	this.doUpdate.emit(customer);
+  }
+  ngOnInit() {
+  }
+}
+----------
+
+4. lets make an entry in customer.component.html
+----
+.
+.
+.
+<button (click)="selectCustomerId = customer.id;" class="btn btn-info" style="margin-left: 10px">Select</button>
+ .
+ .
+ .          
+  <app-customer-form selectId={{selectCustomerId}} (doUpdate)=updateCustomer($event)></app-customer-form>
+----
+
+5. change in customer.component.ts
+-----
+.
+.
+selectCustomerId = 0;
+.
+.
+	updateCustomer(customer:Customer){
+		console.log("customer id @parent "+customer.id);
+		console.log("new customer name is "+customer.name);
+		//this.router.navigate(['/add-customer']);
+	}
+
+

@@ -1,0 +1,6 @@
+
+https://angular.io/guide/lazy-loading-ngmodules
+
+example src 
+https://training.pyther.com/alstom-angular/03-day/lazy-loading-ngmodules.zip
+

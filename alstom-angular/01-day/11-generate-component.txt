@@ -1,0 +1,5 @@
+https://angular.io/cli/generate
+cd helloApp
+ng g component Login
+
+

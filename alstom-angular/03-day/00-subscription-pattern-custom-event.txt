@@ -1,0 +1,29 @@
+// create custom events
+const catFound = new CustomEvent('animalfound', {
+  detail: {
+    name: 'cat'
+  }
+});
+const dogFound = new CustomEvent('animalfound', {
+  detail: {
+    name: 'dog'
+  }
+});
+
+var obj = document;
+// add an appropriate event listener
+obj.addEventListener('animalfound', (e) => console.log(e.detail.name));
+
+// dispatch the events
+obj.dispatchEvent(catFound);
+obj.dispatchEvent(dogFound);
+
+/*
+Simple Subscription Pattern
+------------
+Custom Event => "Times of India"  => "animalFound"
+subscriber => obj.addEventListener('animalfound', (e) => console.log(e.detail.name));
+Dispatch => obj.dispatchEvent(catFound);
+------------
+*/
+

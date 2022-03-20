@@ -1,0 +1,31 @@
+
+Now Let add menu component
+
+Step 1. 
+ng g component Menu 
+
+Step 2.
+change menu.component.html
+-----
+    <nav>
+      <a routerLink="/dashboard" routerLinkActive="active">Dashboard</a> | 
+      <a routerLink="/customers" routerLinkActive="active">Customers</a> | 
+      <a routerLink="/aboutus" routerLinkActive="active">Aboutus</a> | 
+      <a routerLink="/login" routerLinkActive="active">Logout</a>
+    </nav> 
+-----
+
+
+Step 3.
+-------
+Update customers.component.html
+-------
+<app-menu></app-menu>
+<p>customers works!</p>
+-----
+
+Step 4.
+Similarly add this to aboutus.component.html and dashboard.component.html
+
+--
+<app-menu></app-menu>

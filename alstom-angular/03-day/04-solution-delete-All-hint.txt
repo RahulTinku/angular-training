@@ -1,0 +1,51 @@
+Implement "Delete All" @ Customer
+
+1. set  initial state in file src/app/customer/store/reducer/customer.reducer.ts
+----
+.
+export const initialState: CustomerState = {
+  customers: [{name: 'Vivek'},{name: 'Rahul'}]
+};
+---
+
+2. add deleteALLCustomer ACTION in file src/app/customer/store/action/customer.action.ts
+-----
+export const deleteALLCustomer = createAction(
+  '[Customer] DeleteAll',
+  () => ({})
+);
+-----
+
+3. Implement on for deleteALLCustomer
+src/app/customer/store/reducer/customer.reducer.ts
+
+------
+.
+.
+  on(CustomerActions.deleteALLCustomer,
+      (state: CustomerState, {}) =>{
+        console.log("current state ",state);
+        return {customers:[]};
+      })
+.
+---------
+
+4. Add button implement in customer-add.component.ts 
+--------
+.
+.
+import {addCustomer,deleteALLCustomer} from '../store/action/customer.actions';
+.
+.
+.
+  deleteCustomers(): void {
+    this.store.dispatch(deleteALLCustomer());
+  }
+.
+.
+.
+
+5. Add button in 
+-----
+<button (click)="deleteCustomers()" > Delete All</button>
+

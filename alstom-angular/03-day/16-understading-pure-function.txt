@@ -1,0 +1,9 @@
+
+
+pure and impure function
+
+ng test 
+ng test --no-watch --code-coverage
+
+https://angular.io/guide/testing
+

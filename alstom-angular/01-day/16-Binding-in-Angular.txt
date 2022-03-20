@@ -1,0 +1,27 @@
+
+Binding in Angular
+----------
+1. One-way binding
+
+ts 
+---
+heading:string = "Login";
+---
+<h3 [innerHTML]="heading"></h3>
+
+2. Event Binding
+------
+ts
+----
+doLogin(){ alert('hello')}
+---
+html
+<input type="button" name="" value="login" 
+		(click)="doLogin()">
+
+
+3. Two way binding 
+---------
+Using [(ngModel)] 
+[(ngModel)]="user.username"  
+

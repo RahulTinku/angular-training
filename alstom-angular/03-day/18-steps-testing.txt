@@ -1,0 +1,10 @@
+
+create a new project
+$> ng new angular-testing
+$> cd angular-testing
+
+CHeck file app.component.spec.ts
+$> ng test  
+
+// for code coverage
+$> ng test --no-watch --code-coverage

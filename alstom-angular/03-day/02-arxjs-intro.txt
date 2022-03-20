@@ -1,0 +1,6 @@
+
+5. RxJS (ReactiveJS)
+Observer Pattern => https://en.wikipedia.org/wiki/Observer_pattern
+RxJS Introduction: http://reactivex.io/rxjs/manual/overview.html
+Observer Pattern  + lazy + collection 
+

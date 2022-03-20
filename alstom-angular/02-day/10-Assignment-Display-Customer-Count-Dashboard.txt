@@ -1,0 +1,3 @@
+Assignment / Display implement Customer Count in Dashboard Component
+Our System has 4 customer records.
+
